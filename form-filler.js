@@ -12,6 +12,7 @@ function handleMessage(e){
     var address = /address/
     var phone = /phone/
     var password = /password/
+    var postcode = /postcode/
 
 
     var inputs = document.getElementsByTagName("input");
@@ -30,6 +31,8 @@ function handleMessage(e){
           safari.self.tab.dispatchMessage("getDataForType", {type:"country", inputName: inputs[i].name});
         }else if(inputs[i].name.match(address)) {
           safari.self.tab.dispatchMessage("getDataForType", {type:"address", inputName: inputs[i].name});
+        }else if(inputs[i].name.match(postcode)) {
+          safari.self.tab.dispatchMessage("getDataForType", {type:"postal", inputName: inputs[i].name});  
         }else if(inputs[i].name.match(phone)) {
           safari.self.tab.dispatchMessage("getDataForType", {type:"phone", inputName: inputs[i].name});
         }else if(inputs[i].name.match(email)){
